@@ -22,10 +22,15 @@ def creat_sample(sp, num_ag, num_ob):
             [pi / 2, 15., .5, .20],
             [-pi / 2, 15., .5, .20])
     #   リスト設定
+    # list_ob = np.array(
+    #     (["てれび", 0], ["せんぷうき", 1], ["すくりいん", 2], ["つくえ", 3], ["ぱそこん", 4], ["れえぞおこ", 5], ["いす", 6], ["ほんだな", 7], ["そふぁあ", 8], ["ごみばこ", 9], ["ぺっぱあ", 10], ["べっど", 11], ["すとおぶ", 12], ["ろっかあ", 13], ["はちうえ", 14], ["はしら", 15]))
+    # list_ob = list_ob[:num_ob, :]
+    # list_cp = np.array((["まえ", 0], ["うしろ", 1], ["ひだり", 2], ["みぎ", 3]))
+
     list_ob = np.array(
-        (["てれび", 0], ["せんぷうき", 1], ["すくりいん", 2], ["つくえ", 3], ["ぱそこん", 4], ["れえぞおこ", 5], ["いす", 6], ["ほんだな", 7], ["そふぁあ", 8], ["ごみばこ", 9], ["ぺっぱあ", 10], ["べっど", 11], ["すとおぶ", 12], ["ろっかあ", 13], ["はちうえ", 14], ["はしら", 15]))
+        (["terebi", 0], ["senfuki", 1], ["sukurin", 2], ["tukue", 3], ["pasokon", 4], ["rezoko", 5], ["isu", 6], ["hondana", 7], ["sofa", 8], ["gomibako", 9], ["peppa", 10], ["beddo", 11], ["sutofu", 12], ["rokka", 13], ["hachiue", 14], ["hashira", 15]))
     list_ob = list_ob[:num_ob, :]
-    list_cp = np.array((["まえ", 0], ["うしろ", 1], ["ひだり", 2], ["みぎ", 3]))
+    list_cp = np.array((["mae", 0], ["ushiro", 1], ["hidari", 2], ["migi", 3]))
 
     ref_ob = int([ob[1] for ob in list_ob if ob[0] in sp][0])
     ref_cp = int([cp[1] for cp in list_cp if cp[0] in sp][0])
@@ -34,7 +39,7 @@ def creat_sample(sp, num_ag, num_ob):
     list_index_ob.remove(ref_ob)
     list_ag_ob = list(rd.choice(list_index_ob, num_ag - 1, replace=False))
     list_ag_ob = list_ag_ob + [ref_ob]
-    
+
     #   参照物サンプリング
     def creat_rel_samp(para):
         [mu_theta, ka_theta, mn, std] = para
